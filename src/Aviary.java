@@ -10,7 +10,7 @@ public class Aviary {
     private List<Bird> birds;
     private Location location;
 
-    private String aviaryType;
+    private BirdType aviaryType;
 
     public Aviary(Location location) {
         this.birds = new ArrayList<Bird>();
@@ -21,11 +21,15 @@ public class Aviary {
     private void setAviaryType() {
         var typeOfBird = this.birds.get(0).getTypeOfBird();
         switch (typeOfBird) {
-            case "Prey Bird":
-            case "Water Foul":
-            case "Flight Less Bird" : this.aviaryType = typeOfBird;
+            case PREY_BIRD:
+            case WATER_FOUL:
+            case FLIGHT_LESS : this.aviaryType = typeOfBird;
             break;
-            case "DEFAULT": this.aviaryType = "MIX";
+            case SHORE_BIRD:
+            case PIGEON:
+            case OWL:
+            case PARROT: this.aviaryType = BirdType.MIX;
+            break;
         }
     }
 
