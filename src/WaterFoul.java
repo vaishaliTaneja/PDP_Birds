@@ -9,17 +9,17 @@ public class WaterFoul extends Bird implements WaterBird{
     private final static  Boolean IS_MAMMAL = false;
 
     private Set<WaterSource> waterSources;
-    public WaterFoul(String typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods, Set<WaterSource> waterSources) {
-        super(typeOfBird, typeCharacteristic, isExtinct, hasWings, isMammal, preferredFoods);
+    public WaterFoul(String name, String typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods, Set<WaterSource> waterSources) {
+        super(typeOfBird, typeCharacteristic, isExtinct, hasWings, isMammal, name, preferredFoods);
         this.waterSources = waterSources;
     }
 
-    public WaterFoul() {
-        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, Collections.emptySet());
+    public WaterFoul(String name) {
+        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, Collections.emptySet());
     }
 
-    public WaterFoul(Set<WaterSource> waterSources) {
-        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, Collections.emptySet());
+    public WaterFoul(String name, Set<WaterSource> waterSources) {
+        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, Collections.emptySet());
         this.waterSources = waterSources;
     }
 
@@ -45,12 +45,14 @@ public class WaterFoul extends Bird implements WaterBird{
 
     @Override
     public String toString() {
-        return "Parrot {" +
+        return "Water Foul {" +
+                ", name=" + getName() +
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +
                 ", numOfWings=" + getHasWings() +
                 ", favoriteFoods=" + getPreferredFoods() +
+                ", Water resources=" + getWaterSources() +
                 "}";
     }
 }

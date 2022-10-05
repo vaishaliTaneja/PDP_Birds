@@ -19,17 +19,13 @@ public class Aviary {
     }
 
     private void setAviaryType() {
-        if (birds.size() == 0) {
-            this.aviaryType = "MIX";
-        } else {
-            var typeOfBird = this.birds.get(0).getTypeOfBird();
-            switch (typeOfBird) {
-                case "Prey Bird":
-                case "Water Foul":
-                case "Flight Less Bird" : this.aviaryType = typeOfBird;
-                break;
-                case "DEFAULT": this.aviaryType = "MIX";
-            }
+        var typeOfBird = this.birds.get(0).getTypeOfBird();
+        switch (typeOfBird) {
+            case "Prey Bird":
+            case "Water Foul":
+            case "Flight Less Bird" : this.aviaryType = typeOfBird;
+            break;
+            case "DEFAULT": this.aviaryType = "MIX";
         }
     }
 

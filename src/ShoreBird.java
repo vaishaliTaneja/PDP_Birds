@@ -12,23 +12,23 @@ public class ShoreBird extends Bird implements WaterBird{
     private Set<WaterSource> waterSources;
 
 
-    public ShoreBird(String typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods, Set<WaterSource> waterSources) {
-        super(typeOfBird, typeCharacteristic, isExtinct, hasWings, isMammal, preferredFoods);
+    public ShoreBird(String name, String typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods, Set<WaterSource> waterSources) {
+        super(typeOfBird, typeCharacteristic, isExtinct, hasWings, isMammal, name, preferredFoods);
         this.waterSources = waterSources;
     }
 
-    public ShoreBird() {
-        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, Collections.emptySet());
+    public ShoreBird(String name) {
+        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, Collections.emptySet());
     }
 
-    public ShoreBird(Set<WaterSource> waterSources) {
-        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, Collections.emptySet());
+    public ShoreBird(String name, Set<WaterSource> waterSources) {
+        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, Collections.emptySet());
         this.waterSources = waterSources;
     }
 
     @Override
     public Set<WaterSource> getWaterSources() {
-        return null;
+        return waterSources;
     }
 
     @Override
@@ -48,12 +48,14 @@ public class ShoreBird extends Bird implements WaterBird{
 
     @Override
     public String toString() {
-        return "Parrot {" +
+        return "Shore Bird {" +
+                ", name=" + getName() +
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +
                 ", numOfWings=" + getHasWings() +
                 ", favoriteFoods=" + getPreferredFoods() +
+                ", Water resources=" + getWaterSources() +
                 "}";
     }
 }
