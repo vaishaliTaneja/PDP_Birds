@@ -12,20 +12,20 @@ public class Parrot extends Bird {
     private Set<String> vocabulary = new HashSet<>();
     private String favoriteWord;
 
-    public Parrot(String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods, Set<String> vocabulary, String favoriteWord) {
-        super(SPECIES_TYPE, typeCharacteristic, isExtinct, hasWings, isMammal, preferredFoods);
+    public Parrot(String name,String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods, Set<String> vocabulary, String favoriteWord) {
+        super(SPECIES_TYPE, typeCharacteristic, isExtinct, hasWings, isMammal, name, preferredFoods);
         this.vocabulary = vocabulary;
         this.favoriteWord = favoriteWord;
     }
 
-    public Parrot(Set<String> vocabulary, String favoriteWord) {
-        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAl, Collections.emptySet());
+    public Parrot(String name, Set<String> vocabulary, String favoriteWord) {
+        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAl, name, Collections.emptySet());
         this.vocabulary = vocabulary;
         this.favoriteWord = favoriteWord;
     }
 
-    public Parrot() {
-        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAl, Collections.emptySet());
+    public Parrot(String name) {
+        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAl, name, Collections.emptySet());
     }
 
 
@@ -68,11 +68,15 @@ public class Parrot extends Bird {
     @Override
     public String toString() {
         return "Parrot {" +
+                ", name=" + getName() +
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +
                 ", numOfWings=" + getHasWings() +
                 ", favoriteFoods=" + getPreferredFoods() +
+                ", Vocabulary size=" + getVocabularySize() +
+                ", favorite Word=" + getFavoriteWord() +
+                ",  Vocabulary=" + getVocabulary() +
                 "}";
     }
 }

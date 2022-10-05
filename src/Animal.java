@@ -7,7 +7,20 @@ public class Animal {
 
     private Set<String> preferredFoods;
 
+    private String name;
 
+    public Animal (String name, Boolean isExtinct, Boolean isMammal, Set<String> preferredFoods) {
+        if (name == null) {
+            throw new IllegalArgumentException("Bird should have a name identifier");
+        }
+        this.name = name;
+        this.isExtinct = isExtinct;
+        this.isMammal = isMammal;
+        this.preferredFoods = preferredFoods;
+    }
+    public  String getName() {
+        return  this.name;
+    }
     public Boolean getIsExtinct() {
         return isExtinct;
     }

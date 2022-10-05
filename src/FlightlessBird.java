@@ -10,20 +10,21 @@ public class FlightlessBird extends Bird {
     private final static Boolean IS_MAMMAL = false;
 
 
-    public FlightlessBird(String typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods, Set<WaterSource> waterSources) {
-        super(typeOfBird, typeCharacteristic, isExtinct, hasWings, isMammal, preferredFoods);
+    public FlightlessBird(String name, String typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods, Set<WaterSource> waterSources) {
+        super(typeOfBird, typeCharacteristic, isExtinct, hasWings, isMammal, name, preferredFoods);
         /**
          * Check if user passes has wings as true
          */
     }
 
-    public FlightlessBird() {
-        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, Collections.emptySet());
+    public FlightlessBird(String name) {
+        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, Collections.emptySet());
     }
 
     @Override
     public String toString() {
-        return "Parrot {" +
+        return "Flightless {" +
+                ", name=" + getName() +
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +

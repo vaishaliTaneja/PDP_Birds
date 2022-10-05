@@ -6,8 +6,8 @@ public abstract class Bird extends Animal {
     private Boolean hasWings;
     private static String generalCharacteristic = "warm-blooded, bipedal, vertebrate";
 
-    public Bird(String typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods) {
-        super(isExtinct, isMammal, preferredFoods);
+    public Bird(String typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, String name, Set<String> preferredFoods) {
+        super(name, isExtinct, isMammal, preferredFoods);
         this.typeOfBird = typeOfBird;
         this.typeCharacteristic = typeCharacteristic;
         this.hasWings = hasWings;
@@ -16,7 +16,9 @@ public abstract class Bird extends Animal {
     public String getTypeOfBird() {
         return typeOfBird;
     }
-
+    public  String getNameWithType() {
+        return  this.getName() + "(" + getTypeOfBird() + ")";
+    }
     protected void setTypeOfBird(String typeOfBird) {
         this.typeOfBird = typeOfBird;
     }

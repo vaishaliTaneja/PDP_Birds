@@ -10,16 +10,17 @@ public class Owl extends Bird{
 
     private final static Boolean IS_MAMMAL = false;
 
-    public Owl(String typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods) {
-        super(typeOfBird, typeCharacteristic, isExtinct, hasWings, isMammal, preferredFoods);
+    public Owl(String name, String typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods) {
+        super(typeOfBird, typeCharacteristic, isExtinct, hasWings, isMammal, name, preferredFoods);
     }
-    public Owl() {
-        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, Collections.emptySet());
+    public Owl(String name) {
+        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, Collections.emptySet());
     }
 
     @Override
     public String toString() {
-        return "Parrot {" +
+        return "Owl {" +
+                ", name" + getName() +
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +

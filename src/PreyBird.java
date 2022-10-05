@@ -7,16 +7,17 @@ public class PreyBird extends Bird{
     private final static Boolean IS_EXTINCT = false;
     private final static Boolean HAS_WINGS = true;
     private final static Boolean IS_MAMMAL = false;
-    public PreyBird(String typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods) {
-        super(typeOfBird, typeCharacteristic, isExtinct, hasWings, isMammal, preferredFoods);
+    public PreyBird(String name, String typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods) {
+        super(typeOfBird, typeCharacteristic, isExtinct, hasWings, isMammal, name, preferredFoods);
     }
-    public PreyBird() {
-        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, Collections.emptySet());
+    public PreyBird(String name) {
+        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, Collections.emptySet());
     }
 
     @Override
     public String toString() {
-        return "Parrot {" +
+        return "PreyBird {" +
+                ", name=" + getName() +
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +
