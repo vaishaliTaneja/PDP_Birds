@@ -7,6 +7,7 @@ public class Animal {
 
     private Set<String> preferredFoods;
 
+
     public Boolean getIsExtinct() {
         return isExtinct;
     }
