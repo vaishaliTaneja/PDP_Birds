@@ -3,13 +3,13 @@ import java.util.Set;
 
 public class Pigeon extends  Bird{
 
-    private final static String SPECIES_TYPE = "Owl";
+    private final static BirdType SPECIES_TYPE = BirdType.OWL;
     private final static String TYPE_CHARACTERISTICS = "facial disks that frame the eyes and bill";
     private final static Boolean IS_EXTINCT = false;
     private final static Boolean HAS_WINGS = false;
 
     private final static Boolean IS_MAMMAL = true;
-    public Pigeon(String name, String typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods) {
+    public Pigeon(String name, BirdType typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods) {
         super(typeOfBird, typeCharacteristic, isExtinct, hasWings, isMammal, name, preferredFoods);
     }
     public Pigeon(String name) {
@@ -19,7 +19,7 @@ public class Pigeon extends  Bird{
     @Override
     public String toString() {
         return "Pigeon {" +
-                ", name=" + getName() +
+                "name=" + getName() +
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +

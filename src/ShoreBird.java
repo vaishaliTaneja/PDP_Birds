@@ -3,7 +3,7 @@ import java.util.Set;
 
 public class ShoreBird extends Bird implements WaterBird{
 
-    private final static String SPECIES_TYPE = "Shore Bird";
+    private final static BirdType SPECIES_TYPE = BirdType.SHORE_BIRD;
     private final static String TYPE_CHARACTERISTICS = "live near water sources including wetlands, freshwater and saltwater shorelands, even the ocean.";
     private final static Boolean IS_EXTINCT = false;
     private final static Boolean HAS_WINGS = true;
@@ -12,7 +12,7 @@ public class ShoreBird extends Bird implements WaterBird{
     private Set<WaterSource> waterSources;
 
 
-    public ShoreBird(String name, String typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods, Set<WaterSource> waterSources) {
+    public ShoreBird(String name, BirdType typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods, Set<WaterSource> waterSources) {
         super(typeOfBird, typeCharacteristic, isExtinct, hasWings, isMammal, name, preferredFoods);
         this.waterSources = waterSources;
     }
@@ -49,7 +49,7 @@ public class ShoreBird extends Bird implements WaterBird{
     @Override
     public String toString() {
         return "Shore Bird {" +
-                ", name=" + getName() +
+                "name=" + getName() +
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +

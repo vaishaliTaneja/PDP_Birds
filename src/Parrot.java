@@ -3,7 +3,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Parrot extends Bird {
-    private final static String SPECIES_TYPE = "Parrot";
+    private final static BirdType SPECIES_TYPE = BirdType.PARROT;
     private final static String TYPE_CHARACTERISTICS = "short, curved beak and are known for their intelligence";
     private final static Boolean IS_EXTINCT = false;
     private final static Boolean HAS_WINGS = true;
@@ -68,7 +68,7 @@ public class Parrot extends Bird {
     @Override
     public String toString() {
         return "Parrot {" +
-                ", name=" + getName() +
+                "name=" + getName() +
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +

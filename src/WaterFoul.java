@@ -2,14 +2,14 @@ import java.util.Collections;
 import java.util.Set;
 
 public class WaterFoul extends Bird implements WaterBird{
-    private final static String SPECIES_TYPE = "Water Foul";
+    private final static BirdType SPECIES_TYPE = BirdType.WATER_FOUL;
     private final static String TYPE_CHARACTERISTICS = "near water sources (fresh or salt)";
     private final static Boolean IS_EXTINCT = false;
     private final static Boolean HAS_WINGS = true;
     private final static  Boolean IS_MAMMAL = false;
 
     private Set<WaterSource> waterSources;
-    public WaterFoul(String name, String typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods, Set<WaterSource> waterSources) {
+    public WaterFoul(String name, BirdType typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods, Set<WaterSource> waterSources) {
         super(typeOfBird, typeCharacteristic, isExtinct, hasWings, isMammal, name, preferredFoods);
         this.waterSources = waterSources;
     }
@@ -46,7 +46,7 @@ public class WaterFoul extends Bird implements WaterBird{
     @Override
     public String toString() {
         return "Water Foul {" +
-                ", name=" + getName() +
+                "name=" + getName() +
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +
