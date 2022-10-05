@@ -4,7 +4,7 @@ import java.util.Set;
 public class Pigeon extends  Bird{
 
     private final static String SPECIES_TYPE = "Owl";
-    private final static String TYPE_CHARACTERISTICS = "acial disks that frame the eyes and bill";
+    private final static String TYPE_CHARACTERISTICS = "facial disks that frame the eyes and bill";
     private final static Boolean IS_EXTINCT = false;
     private final static Boolean HAS_WINGS = false;
 
