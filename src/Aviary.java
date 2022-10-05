@@ -1,9 +1,3 @@
-import entity.birds.FlightlessBird;
-import entity.birds.PreyBird;
-import entity.birds.Waterfowl;
-import entity.birds.abstracts.Bird;
-import entity.birds.enums.BirdType;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
