@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -145,18 +146,23 @@ public class Conservatory {
 
     public void mapAviariesByTheirLocation() {
         for (Location loc: Location.values()) {
-            HashMap<Bird, String> birdLocMap = new HashMap<>();
+            HashMap<String, List<Bird>> birdLocMap = new HashMap<>();
             for (Aviary aviary : aviaries) {
                 if (loc == aviary.getLocation()) {
-                    for (Bird bird : aviary.getAllBirds())
-                        birdLocMap.put(bird, aviary.getLocation().toString());
+                    List<Bird> birdList = new ArrayList<>();
+                    for (Bird bird : aviary.getAllBirds()){
+                        birdList.add(bird);
+                    }
+                    birdLocMap.put(aviary.getAviaryID(),birdList );
                 }
             }
-        }
-
-        System.out.println("Bird listed in alpha order and their location");
-        for (Bird bird : birdLocMap.keySet()) {
-            System.out.println(bird.getName() + " : " + birdLocMap.get(bird));
+            if(birdLocMap.size() > 0){
+                System.out.println(loc);
+                for(String aviaryID : birdLocMap.keySet()){
+                    //KEWAL Not sure how the bird will print
+                    System.out.println(aviaryID + " : " +birdLocMap.get(aviaryID).toString());
+                }
+            }
         }
     }
 

@@ -19,6 +19,10 @@ public class Aviary {
         return this.aviaryType;
     }
 
+    public String getAviaryID(){
+        return this.id;
+    }
+
     private void setAviaryType() {
         var typeOfBird = this.birds.get(0).getTypeOfBird();
         switch (typeOfBird) {
