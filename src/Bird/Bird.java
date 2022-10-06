@@ -7,6 +7,7 @@ public abstract class Bird extends Animal {
     private BirdType typeOfBird;
     private String typeCharacteristic;
     private Boolean hasWings;
+
     private static String generalCharacteristic = "warm-blooded, bipedal, vertebrate";
 
     public Bird(BirdType typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, String name, Set<String> preferredFoods) {
