@@ -23,6 +23,8 @@ public class WaterFoulTest extends TestCase {
         // water source
         waterSources.add(WaterSource.FRESHWATER_SHORELANDS);
         duck = new WaterFoul("duck", favoriteFoods, waterSources);
+        WaterFoul defaultWaterFoul = new WaterFoul("duck1");
+        WaterFoul swan = new WaterFoul("Swan", BirdType.WATER_FOUL, "I am a swan", WaterFoul.IS_EXTINCT, WaterFoul.HAS_WINGS, WaterFoul.IS_MAMMAL, favoriteFoods, waterSources);
     }
 
     public void testGetWaterSources() {
@@ -55,6 +57,7 @@ public class WaterFoulTest extends TestCase {
     }
 
     public void testTestToString() {
-
+        duck.setWaterSources(waterSources);
+        assertEquals("Water Foul {name=duck, type=WATER_FOUL, characteristic=near water sources (fresh or salt), isExtinct=false, hasWings=true, favoriteFoods=[FISH], Water resources=[FRESHWATER_SHORELANDS]}", duck.toString());
     }
 }

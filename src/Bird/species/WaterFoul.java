@@ -59,7 +59,7 @@ public class WaterFoul extends Bird implements WaterBird{
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +
-                ", numOfWings=" + getHasWings() +
+                ", hasWings=" + getHasWings() +
                 ", favoriteFoods=" + getPreferredFoods() +
                 ", Water resources=" + getWaterSources() +
                 "}";
