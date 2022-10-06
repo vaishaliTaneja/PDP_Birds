@@ -1,21 +1,19 @@
-import java.security.PublicKey;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
 
 public class Aviary {
     // maximum capacity of each aviary
     public static final int MAX_CAPACITY = 5;
-
+    private final String id;
     private List<Bird> birds;
     private Location location;
     private BirdType aviaryType;
 
-    public Aviary(Location location) {
+    public Aviary(Location location, String id) {
+        this.birds = new ArrayList<Bird>();
         this.location = location;
+        this.id = id;
     }
-
     private void setAviaryType() {
         var typeOfBird = this.birds.get(0).getTypeOfBird();
         switch (typeOfBird) {
@@ -31,6 +29,9 @@ public class Aviary {
         }
     }
 
+    public String getAviaryID(){
+        return this.id;
+    }
     public BirdType getAviaryType(){
         return this.aviaryType;
     }
@@ -64,6 +65,9 @@ public class Aviary {
         }
         if (this.birds.size() < MAX_CAPACITY) {
             this.birds.add(bird);
+            if (this.aviaryType == null) {
+                this.setAviaryType();
+            }
         }
     }
 
@@ -108,9 +112,14 @@ public class Aviary {
 
     public void printAviarySign(){
         System.out.println(getAviaryType() + " Aviary : ");
-
-        //Kewal get characteristics from BirdsType;
-        String speciesCharacteristics = this.birds.get(0).getCharacteristic();
-        System.out.println("The birds in this enclosure are known for" + speciesCharacteristics );
+        Set<String> characteristics = new HashSet<>();
+        for (int i = 1; i <= birds.size(); i++) {
+            characteristics.add(birds.get(i).getCharacteristic());
+        }
+        String aviaryCharacteristics = "";
+        for (String characteristic : characteristics) {
+            aviaryCharacteristics += characteristic + " ";
+        }
+        System.out.println("The birds in this enclosure are known for" + aviaryCharacteristics );
     }
 }

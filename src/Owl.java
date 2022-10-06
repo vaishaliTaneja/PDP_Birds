@@ -4,9 +4,9 @@ import java.util.Set;
 public class Owl extends Bird{
 
     private final static BirdType SPECIES_TYPE = BirdType.OWL;
-    private final static String TYPE_CHARACTERISTICS = "acial disks that frame the eyes and bill";
+    public final static String TYPE_CHARACTERISTICS = "facial disks that frame the eyes and bill";
     private final static Boolean IS_EXTINCT = false;
-    private final static Boolean HAS_WINGS = false;
+    private final static Boolean HAS_WINGS = true;
 
     private final static Boolean IS_MAMMAL = false;
 
@@ -20,12 +20,13 @@ public class Owl extends Bird{
     @Override
     public String toString() {
         return "Owl {" +
-                "name" + getName() +
+                "name=" + getName() +
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +
-                ", numOfWings=" + getHasWings() +
+                ", hasWings=" + getHasWings() +
                 ", favoriteFoods=" + getPreferredFoods() +
+                ", isMammal=" + getIsMammal() +
                 "}";
     }
 }
