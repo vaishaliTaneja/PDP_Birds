@@ -22,7 +22,7 @@ public abstract class Bird extends Animal {
     public  String getNameWithType() {
         return  this.getName() + "(" + getTypeOfBird() + ")";
     }
-    protected void setTypeOfBird(BirdType typeOfBird) {
+    public void setTypeOfBird(BirdType typeOfBird) {
         this.typeOfBird = typeOfBird;
     }
 
