@@ -8,11 +8,11 @@ import java.util.Collections;
 import java.util.Set;
 
 public class WaterFoul extends Bird implements WaterBird{
-    private final static BirdType SPECIES_TYPE = BirdType.WATER_FOUL;
-    private final static String TYPE_CHARACTERISTICS = "near water sources (fresh or salt)";
-    private final static Boolean IS_EXTINCT = false;
-    private final static Boolean HAS_WINGS = true;
-    private final static  Boolean IS_MAMMAL = false;
+    public final static BirdType SPECIES_TYPE = BirdType.WATER_FOUL;
+    public final static String TYPE_CHARACTERISTICS = "near water sources (fresh or salt)";
+    public final static Boolean IS_EXTINCT = false;
+    public final static Boolean HAS_WINGS = true;
+    public final static  Boolean IS_MAMMAL = false;
 
     private Set<WaterSource> waterSources;
     public WaterFoul(String name, BirdType typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods, Set<WaterSource> waterSources) {

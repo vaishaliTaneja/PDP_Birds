@@ -9,11 +9,11 @@ import java.util.Set;
 
 public class ShoreBird extends Bird implements WaterBird{
 
-    private final static BirdType SPECIES_TYPE = BirdType.SHORE_BIRD;
-    private final static String TYPE_CHARACTERISTICS = "live near water sources including wetlands, freshwater and saltwater shorelands, even the ocean.";
-    private final static Boolean IS_EXTINCT = false;
-    private final static Boolean HAS_WINGS = true;
-    private final static Boolean IS_MAMMAL = false;
+    public final static BirdType SPECIES_TYPE = BirdType.SHORE_BIRD;
+    public final static String TYPE_CHARACTERISTICS = "live near water sources including wetlands, freshwater and saltwater shorelands, even the ocean.";
+    public final static Boolean IS_EXTINCT = false;
+    public final static Boolean HAS_WINGS = true;
+    public final static Boolean IS_MAMMAL = false;
 
     private Set<WaterSource> waterSources;
 

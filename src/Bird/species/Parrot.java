@@ -8,12 +8,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Parrot extends Bird {
-    private final static BirdType SPECIES_TYPE = BirdType.PARROT;
-    private final static String TYPE_CHARACTERISTICS = "short, curved beak and are known for their intelligence";
-    private final static Boolean IS_EXTINCT = false;
-    private final static Boolean HAS_WINGS = true;
-
-    private final static  Boolean IS_MAMMAl = false;
+    public final static BirdType SPECIES_TYPE = BirdType.PARROT;
+    public final static String TYPE_CHARACTERISTICS = "short, curved beak and are known for their intelligence";
+    public final static Boolean IS_EXTINCT = false;
+    public final static Boolean HAS_WINGS = true;
+    public final static  Boolean IS_MAMMAl = false;
     private Set<String> vocabulary = new HashSet<>();
     private String favoriteWord;
 
