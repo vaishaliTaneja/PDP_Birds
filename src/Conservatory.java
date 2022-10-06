@@ -73,9 +73,9 @@ public class Conservatory {
      */
     public Boolean birdAssignedToAviary(Bird bird) {
         boolean isBirdAssigned = false;
+        BirdType birdType = mapAviaryType(bird);
         for (Aviary aviary : aviaries) {
-            //KEWAL BOTH TYPES SHOULD GET FROM ENUM ?
-            if (aviary.getAllBirds().size() < Aviary.MAX_CAPACITY && aviary.getAviaryType() == bird.getTypeOfBird()) {
+            if (aviary.getAllBirds().size() < Aviary.MAX_CAPACITY && aviary.getAviaryType() == birdType) {
                 aviary.addBird(bird);
                 isBirdAssigned = true;
                 break;
@@ -85,7 +85,7 @@ public class Conservatory {
         if (isBirdAssigned == false) {
             if (aviaries.size() < MAX_AVIARIES) {
                 Location location = Location.valueOf("LOCATION" + aviaries.size());
-                Aviary newAviary = new Aviary(location);
+                Aviary newAviary = new Aviary(location , "Aviary" + aviaries.size());
                 this.addAviary(newAviary);
                 newAviary.addBird(bird);
                 isBirdAssigned = true;
@@ -143,6 +143,23 @@ public class Conservatory {
         }
     }
 
+    public void mapAviariesByTheirLocation() {
+        for (Location loc: Location.values()) {
+            HashMap<Bird, String> birdLocMap = new HashMap<>();
+            for (Aviary aviary : aviaries) {
+                if (loc == aviary.getLocation()) {
+                    for (Bird bird : aviary.getAllBirds())
+                        birdLocMap.put(bird, aviary.getLocation().toString());
+                }
+            }
+        }
+
+        System.out.println("Bird listed in alpha order and their location");
+        for (Bird bird : birdLocMap.keySet()) {
+            System.out.println(bird.getName() + " : " + birdLocMap.get(bird));
+        }
+    }
+
     /**
      * print all signs of all the aviaries
      */
@@ -151,4 +168,17 @@ public class Conservatory {
             aviary.printAviarySign();
         }
     }
+
+    private BirdType mapAviaryType(Bird bird) {
+        BirdType birdType = BirdType.MIX;
+        var typeOfBird = bird.getTypeOfBird();
+        switch (typeOfBird) {
+            case PREY_BIRD:
+            case WATER_FOUL:
+            case FLIGHT_LESS : birdType = typeOfBird;
+            break;
+        }
+        return birdType;
+    }
+
 }

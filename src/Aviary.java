@@ -1,21 +1,22 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Aviary {
     // maximum capacity of each aviary
     public static final int MAX_CAPACITY = 5;
-
+    private final String id;
     private List<Bird> birds;
     private Location location;
 
     private BirdType aviaryType;
 
-    public Aviary(Location location) {
+    public Aviary(Location location, String id) {
         this.birds = new ArrayList<Bird>();
         this.location = location;
-        this.setAviaryType();
+        this.id = id;
+    }
+
+    public BirdType getAviaryType(){
+        return this.aviaryType;
     }
 
     private void setAviaryType() {
@@ -62,6 +63,9 @@ public class Aviary {
         }
         if (this.birds.size() < MAX_CAPACITY) {
             this.birds.add(bird);
+            if (this.aviaryType == null) {
+                this.setAviaryType();
+            }
         }
     }
 
@@ -103,4 +107,18 @@ public class Aviary {
     public boolean isEmpty() {
         return birds.size() == 0;
     }
+
+    public void printAviarySign(){
+        System.out.println(getAviaryType() + " Aviary : ");
+        Set<String> characteristics = new HashSet<>();
+        for (int i = 1; i <= birds.size(); i++) {
+            characteristics.add(birds.get(i).getCharacteristic());
+        }
+        String aviaryCharacteristics = "";
+        for (String characteristic : characteristics) {
+            aviaryCharacteristics += characteristic + " ";
+        }
+        System.out.println("The birds in this enclosure are known for" + aviaryCharacteristics );
+    }
+
 }
