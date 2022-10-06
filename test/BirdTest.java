@@ -1,3 +1,5 @@
+import enums.BirdType;
+import Bird.species.Owl;
 import org.junit.Before;
 
 import static org.junit.Assert.*;
@@ -57,7 +59,7 @@ public class BirdTest {
 
     @org.junit.Test
     public void testToString() {
-        String desc = "Owl {name=OWL1, type=OWL, characteristic=facial disks that frame the eyes and bill, isExtinct=false, hasWings=true, favoriteFoods=[], isMammal=false}";
+        String desc = "Bird.species.Owl {name=OWL1, type=OWL, characteristic=facial disks that frame the eyes and bill, isExtinct=false, hasWings=true, favoriteFoods=[], isMammal=false}";
         assertEquals(desc, bird.toString());
     }
 }
