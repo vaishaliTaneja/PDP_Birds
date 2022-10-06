@@ -49,11 +49,12 @@ public class WaterFoulTest extends TestCase {
 
 
     @Test(expected = IllegalStateException.class)
-    public void testRemoveWaterSourceException() {
+    public void IllegalStateException1() {
         duck.removeWaterSource(WaterSource.FRESHWATER_SHORELANDS);
         duck.removeWaterSource(WaterSource.FRESHWATER_SHORELANDS);
     }
 
     public void testTestToString() {
+
     }
 }
