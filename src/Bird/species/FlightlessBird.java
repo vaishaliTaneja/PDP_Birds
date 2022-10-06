@@ -16,7 +16,7 @@ public class FlightlessBird extends Bird {
     public final static Boolean IS_MAMMAL = false;
 
 
-    public FlightlessBird(String name, BirdType typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods, Set<WaterSource> waterSources) {
+    public FlightlessBird(String name, BirdType typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods) {
         super(typeOfBird, typeCharacteristic, isExtinct, hasWings, isMammal, name, preferredFoods);
         /**
          * Check if user passes has wings as true
@@ -34,7 +34,7 @@ public class FlightlessBird extends Bird {
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +
-                ", numOfWings=" + getHasWings() +
+                ", hasWings=" + getHasWings() +
                 ", favoriteFoods=" + getPreferredFoods() +
                 "}";
     }

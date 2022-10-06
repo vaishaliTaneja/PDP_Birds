@@ -11,13 +11,16 @@ import static org.junit.Assert.*;
 public class AnimalTest {
 
     Animal animal;
-    String name = "Cat";
-    boolean isExtinct = false;
-    boolean isMammal = true;
+    String name ;
+    boolean isExtinct;
+    boolean isMammal;
     Set<String> prefFood = new HashSet<>();
 
     @Before
     public void setUp() throws Exception {
+        name =  "Cat";
+        isExtinct = false;
+        isMammal = true;
         prefFood.add("Meat");
         animal = new Animal(name, isExtinct, isMammal, prefFood);
     }
@@ -25,6 +28,13 @@ public class AnimalTest {
     @Test
     public void getName() {
         assertEquals(name, animal.getName());
+    }
+
+    @Test
+    public void setName(){
+        String newName = "gundu";
+        animal.setName(newName);
+        assertEquals( newName, animal.getName());
     }
 
     @Test
