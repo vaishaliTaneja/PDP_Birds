@@ -62,7 +62,9 @@ public class ShoreBirdTest {
      */
     @Test
     public void testRemoveWaterSource() {
+        waterSources.add(WaterSource.WETLANDS);
         waterSources.remove(WaterSource.WETLANDS);
+        great_auk.addWaterSource(WaterSource.WETLANDS);
         great_auk.removeWaterSource(WaterSource.WETLANDS);
         assertEquals(waterSources, great_auk.getWaterSources());
     }

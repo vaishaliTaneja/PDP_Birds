@@ -62,7 +62,9 @@ public class WaterFoulTest {
      */
     @Test
     public void testRemoveWaterSource() {
+        waterSources.add(WaterSource.FRESHWATER_LAKE);
         waterSources.remove(WaterSource.FRESHWATER_LAKE);
+        duck.addWaterSource(WaterSource.FRESHWATER_LAKE);
         duck.removeWaterSource(WaterSource.FRESHWATER_LAKE);
         assertEquals(waterSources, duck.getWaterSources());
     }
