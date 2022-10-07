@@ -1,11 +1,14 @@
 package Bird.species;
 
-import java.util.Set;
-
 import Bird.Bird;
 import enums.BirdType;
 import enums.WaterSource;
 
+import java.util.Set;
+
+/**
+ * Shore Bird is a type of bird that implements Water Bird
+ */
 public class ShoreBird extends Bird implements WaterBird{
 
     public final static BirdType SPECIES_TYPE = BirdType.SHORE_BIRD;
@@ -16,36 +19,73 @@ public class ShoreBird extends Bird implements WaterBird{
 
     private Set<WaterSource> waterSources;
 
-
+    /**
+     * To create shore bird with below arguments
+     * @param name
+     * @param typeOfBird
+     * @param typeCharacteristic
+     * @param isExtinct
+     * @param hasWings
+     * @param isMammal
+     * @param preferredFoods
+     * @param waterSources
+     */
     public ShoreBird(String name, BirdType typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods, Set<WaterSource> waterSources) {
         super(typeOfBird, typeCharacteristic, isExtinct, hasWings, isMammal, name, preferredFoods);
         this.waterSources = waterSources;
     }
 
+    /**
+     * To create shore bird with below arguments
+     * @param name
+     * @param food
+     */
     public ShoreBird(String name, Set<String> food) {
         super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, food);
     }
 
+    /**
+     * To create shore bird with below arguments
+     * @param name
+     * @param food
+     * @param waterSources
+     */
     public ShoreBird(String name, Set<String> food, Set<WaterSource> waterSources) {
         super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, food);
         this.waterSources = waterSources;
     }
 
+    /**
+     * To get water sources
+     * @return water sources
+     */
     @Override
     public Set<WaterSource> getWaterSources() {
         return waterSources;
     }
 
+    /**
+     * To set water resources
+     * @param waterSources
+     */
     @Override
     public void setWaterSources(Set<WaterSource> waterSources) {
         this.waterSources = waterSources;
     }
 
+    /**
+     * To add new water source to existing list
+     * @param waterSource
+     */
     @Override
     public void addWaterSource(WaterSource waterSource) {
         this.waterSources.add(waterSource);
     }
 
+    /**
+     * To remove water source from existing list of water sources
+     * @param waterSource
+     */
     @Override
     public void removeWaterSource(WaterSource waterSource) {
         if (this.waterSources.isEmpty()) {
@@ -55,6 +95,10 @@ public class ShoreBird extends Bird implements WaterBird{
         }
     }
 
+    /**
+     * Returns a string with all the feature of Shore bird
+     * @return a string
+     */
     @Override
     public String toString() {
         return "Shore Bird {" +
