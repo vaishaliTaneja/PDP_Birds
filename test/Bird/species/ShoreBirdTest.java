@@ -5,6 +5,7 @@ import enums.Food;
 import enums.WaterSource;
 import junit.framework.TestCase;
 import org.junit.Before;
+import org.junit.Test;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -24,29 +25,29 @@ public class ShoreBirdTest extends TestCase {
         ShoreBird defaultWaterFoul = new ShoreBird("great_auk1", favoriteFoods);
         horned_puffin = new ShoreBird("horned puffin", BirdType.WATER_FOUL, "I am a horned puffin", WaterFoul.IS_EXTINCT, WaterFoul.HAS_WINGS, WaterFoul.IS_MAMMAL, favoriteFoods, waterSources);
     }
-
+    @Test
     public void testGetWaterSources() {
         waterSources.add(WaterSource.FRESHWATER_SHORELANDS);
         assertEquals(waterSources, great_auk.getWaterSources());
     }
-
+    @Test
     public void testSetWaterSources() {
         horned_puffin.setWaterSources(waterSources);
         assertEquals(waterSources, horned_puffin.getWaterSources());
     }
-
+    @Test
     public void testAddWaterSource() {
         waterSources.add(WaterSource.WETLANDS);
         great_auk.addWaterSource(WaterSource.WETLANDS);
         assertEquals(waterSources, great_auk.getWaterSources());
     }
-
+    @Test
     public void testRemoveWaterSource() {
         waterSources.remove(WaterSource.WETLANDS);
         great_auk.removeWaterSource(WaterSource.WETLANDS);
         assertEquals(waterSources, great_auk.getWaterSources());
     }
-
+    @Test
     public void testTestToString() {
         great_auk.setWaterSources(waterSources);
         assertEquals("Shore Bird {name=great_auk, type=SHORE_BIRD, characteristic=live near water sources including wetlands, freshwater and saltwater shorelands, even the ocean., isExtinct=false, hasWings=true, favoriteFoods=[FISH], Water resources=[SALTWATER_SHORELANDS]}", great_auk.toString());

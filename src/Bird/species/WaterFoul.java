@@ -45,11 +45,12 @@ public class WaterFoul extends Bird implements WaterBird{
     }
 
     @Override
-    public void removeWaterSource(WaterSource waterSource) {
+    public void removeWaterSource(WaterSource waterSource) throws IllegalStateException{
         if (this.waterSources.isEmpty()) {
             throw new IllegalStateException("Water Sources is empty");
+        } else {
+            this.waterSources.remove(waterSource);
         }
-        this.waterSources.remove(waterSource);
     }
 
     @Override
