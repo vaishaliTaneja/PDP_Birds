@@ -114,17 +114,22 @@ public class Conservatory {
      * @param bird target bird
      */
     public Boolean birdAssignedToAviary(Bird bird) {
+        // is bird assigned is initially set to false
         boolean isBirdAssigned = false;
+        // checks the type of bird
         BirdType birdType = mapAviaryType(bird);
+        //loops through the aviaries and check if there is space available in any aviary for given bird type
         for (Aviary aviary : aviaries) {
             if (aviary.getAllBirds().size() < Aviary.MAX_CAPACITY && aviary.getAviaryType() == birdType) {
                 aviary.addBird(bird);
+                // sets the flag to true
                 isBirdAssigned = true;
                 break;
             }
         }
-
+        // if even after looping through all the aviaries bird is not assigned
         if (isBirdAssigned == false) {
+            // Created a new Aviary if less than 20 aviary and assigns bird to new aviary
             if (aviaries.size() < MAX_AVIARIES) {
                 int LocNum = getAviaries().size() + 1;
                 Location location = Location.valueOf("LOCATION" + LocNum);
