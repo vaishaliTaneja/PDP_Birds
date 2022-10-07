@@ -40,7 +40,8 @@ public class ConservatoryTest {
     public void rescueBirdThatIsNotExtinctReturnsTrue() {
         Set<String> prefFood = new HashSet<>();
         Bird owl = new Owl("Owl",Owl.SPECIES_TYPE, Owl.TYPE_CHARACTERISTICS, false,Owl.HAS_WINGS,Owl.IS_MAMMAL,prefFood);
-        assertEquals(true, conservatory.rescueBird(owl));
+        conservatory.rescueBird(owl);
+        assertEquals(owl, conservatory.getAviaries().get(0).getAllBirds().get(0));
     }
 
     @Test
@@ -68,12 +69,11 @@ public class ConservatoryTest {
     public void rescueBirdWhenMaxCapacityExceededReturnsFalse() {
         Set<String> prefFood = new HashSet<>();
         try {
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 101; i++) {
                 Bird owl = new Owl("Owl", Owl.SPECIES_TYPE, Owl.TYPE_CHARACTERISTICS, false, Owl.HAS_WINGS, Owl.IS_MAMMAL, prefFood);
                 conservatory.rescueBird(owl);
             }
         }catch (Exception e){
-            System.out.println("Exception called");
             assertEquals("All 20 Avaries full capacity! Can't rescue", e.getMessage());
         }
     }
@@ -91,10 +91,10 @@ public class ConservatoryTest {
 
         }catch (Exception e){
             System.out.println("Exception called");
+            PreyBird preyBird = new PreyBird("PreyBird",PreyBird.SPECIES_TYPE, PreyBird.TYPE_CHARACTERISTICS, false,Owl.HAS_WINGS,Owl.IS_MAMMAL,prefFood);
             assertEquals("Conflicting birds and no empty aviary! Can't rescue", e.getMessage());
         }
     }
-    //KEWAL ADD TEST FOR WHEN THERE IS NO SPACE. AND CONFLICTING
 
     @Test
     public void addFoodRequirementsOfBird() {
@@ -116,6 +116,31 @@ public class ConservatoryTest {
         Aviary aviary = new Aviary(Location.LOCATION3, "Aviary1");
         conservatory.addAviary(aviary);
         assertEquals(aviary, conservatory.getAviaries().get(0));
+    }
+
+    @Test
+    public void addAviaryWhenAvariesSizeGreaterThan20() {
+        try{
+            for(int i=0; i< 21; i++){
+                String av = "Avary"+i;
+            Aviary aviary = new Aviary(Location.LOCATION3, av);
+            conservatory.addAviary(aviary);}
+        }catch (Exception e){
+            assertEquals( "Already has 20 aviaries!",e.getMessage());
+        }
+
+    }
+
+    @Test
+    public void addNullAviary() {
+        try{
+
+                Aviary aviary = null;
+                conservatory.addAviary(aviary);
+        }catch (Exception e){
+            assertEquals( "Argument cannot be null",e.getMessage());
+        }
+
     }
 
     @Test
