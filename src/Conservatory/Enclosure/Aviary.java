@@ -1,10 +1,13 @@
 package Conservatory.Enclosure;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import Bird.Bird;
 import enums.BirdType;
 import enums.Location;
-
-import java.util.*;
 
 
 public class Aviary {
@@ -65,14 +68,17 @@ public class Aviary {
      *
      * @param bird bird to be added
      */
-    public void addBird(Bird bird) {
+    public void addBird(Bird bird) throws IllegalArgumentException{
         if (bird == null) {
+            System.out.println("I am here");
             throw new IllegalArgumentException("Bird.Bird should be an object of type Bird.Bird");
         }
-        if (this.birds.size() < MAX_CAPACITY) {
-            this.birds.add(bird);
-            if (this.aviaryType == null) {
-                this.setAviaryType();
+        else{
+            if (this.birds.size() < MAX_CAPACITY) {
+                this.birds.add(bird);
+                if (this.aviaryType == null) {
+                    this.setAviaryType();
+                }
             }
         }
     }
@@ -91,7 +97,7 @@ public class Aviary {
      *
      * @param location new location
      */
-    public void setLocation(Location location) {
+    public void setLocation(Location location) throws IllegalArgumentException {
         if (location == null) {
             throw new IllegalArgumentException("enums.Location cannot be null");
         }
@@ -104,7 +110,8 @@ public class Aviary {
      * @return number of types
      */
     public Integer getNumOfBirds() {
-        return birds.size();
+        System.out.println(this.birds);
+        return this.birds.size();
     }
 
     /**
@@ -113,19 +120,19 @@ public class Aviary {
      * @return return true if this aviary is empty
      */
     public boolean isEmpty() {
-        return birds.size() == 0;
+        return birds.isEmpty();
     }
 
-    public void printAviarySign(){
-        System.out.println(getAviaryType() + " Conservatory.Enclosure.Aviary : ");
+    public String printAviarySign(){
+        String sign = getAviaryType() + " Aviary : ";
         Set<String> characteristics = new HashSet<>();
-        for (int i = 1; i <= birds.size(); i++) {
+        for (int i = 0; i < birds.size(); i++) {
             characteristics.add(birds.get(i).getCharacteristic());
         }
         String aviaryCharacteristics = "";
         for (String characteristic : characteristics) {
             aviaryCharacteristics += characteristic + " ";
         }
-        System.out.println("The birds in this enclosure are known for" + aviaryCharacteristics );
+        return(sign + "The birds in this enclosure are known for " + aviaryCharacteristics );
     }
 }

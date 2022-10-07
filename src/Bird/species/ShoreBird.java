@@ -1,11 +1,10 @@
 package Bird.species;
 
+import java.util.Set;
+
 import Bird.Bird;
 import enums.BirdType;
 import enums.WaterSource;
-
-import java.util.Collections;
-import java.util.Set;
 
 public class ShoreBird extends Bird implements WaterBird{
 
@@ -49,10 +48,13 @@ public class ShoreBird extends Bird implements WaterBird{
 
     @Override
     public void removeWaterSource(WaterSource waterSource) {
+        System.out.println("I am here");
+        System.out.println(this.waterSources);
         if (this.waterSources.isEmpty()) {
             throw new IllegalStateException("Water Sources is empty");
+        } else {
+            this.waterSources.remove(waterSource);
         }
-        this.waterSources.remove(waterSource);
     }
 
     @Override
