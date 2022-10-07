@@ -2,12 +2,10 @@ package Conservatory;
 
 import Bird.Bird;
 import Bird.species.Owl;
-import Bird.species.Parrot;
 import Bird.species.PreyBird;
 import Conservatory.Enclosure.Aviary;
 import enums.Food;
 import enums.Location;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +13,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class ConservatoryTest {
 
@@ -230,5 +228,14 @@ public class ConservatoryTest {
         conservatory.rescueBird(preyBird);
         Aviary aviary = conservatory.getAviaries().get(0);
         assertEquals("MIX Aviary : The birds in this enclosure are known for facial disks that frame the eyes and bill ",conservatory.printSignOfAviary(aviary));
+    }
+    @Test(expected =  IllegalArgumentException.class)
+    public void IllegalArgsException1() {
+        conservatory.searchBirdInAviaries(null);
+    }
+
+    @Test(expected =  IllegalArgumentException.class)
+    public void IllegalArgsException2() {
+        conservatory.removeAviary(null);
     }
 }

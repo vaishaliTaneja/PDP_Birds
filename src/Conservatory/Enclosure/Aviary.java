@@ -1,15 +1,17 @@
 package Conservatory.Enclosure;
 
+import Bird.Bird;
+import enums.BirdType;
+import enums.Location;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import Bird.Bird;
-import enums.BirdType;
-import enums.Location;
-
-
+/**
+ * Aviary is a place to store birds.
+ */
 public class Aviary {
     // maximum capacity of each aviary
     public static final int MAX_CAPACITY = 5;
@@ -17,7 +19,12 @@ public class Aviary {
     private List<Bird> birds;
     private Location location;
     private BirdType aviaryType;
-
+    /**
+     * constructor of aviary
+     * @param location location of the aviary from Enum location
+     * @param id unique id of the aviary
+     *
+     */
     public Aviary(Location location, String id) {
         this.birds = new ArrayList<Bird>();
         this.location = location;
@@ -76,7 +83,7 @@ public class Aviary {
     }
 
     /**
-     * add new bird to this aviary
+     * add new bird to this aviary throws Illegal Argument exception if argument is null
      *
      * @param bird to be added
      */
@@ -86,6 +93,7 @@ public class Aviary {
             throw new IllegalArgumentException("Bird.Bird should be an object of type Bird.Bird");
         }
         else{
+            // if aviary size is less then max capacity
             if (this.birds.size() < MAX_CAPACITY) {
                 this.birds.add(bird);
                 if (this.aviaryType == null) {
