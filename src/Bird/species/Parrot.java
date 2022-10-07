@@ -16,8 +16,8 @@ public class Parrot extends Bird {
     private Set<String> vocabulary = new HashSet<>();
     private String favoriteWord;
 
-    public Parrot(String name,String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods, Set<String> vocabulary, String favoriteWord) {
-        super(SPECIES_TYPE, typeCharacteristic, isExtinct, hasWings, isMammal, name, preferredFoods);
+    public Parrot(String name,BirdType typeOfBird, String typeCharacteristic, Boolean isExtinct, Boolean hasWings, Boolean isMammal, Set<String> preferredFoods, Set<String> vocabulary, String favoriteWord) {
+        super(typeOfBird, typeCharacteristic, isExtinct, hasWings, isMammal, name, preferredFoods);
         this.vocabulary = vocabulary;
         this.favoriteWord = favoriteWord;
     }
@@ -33,7 +33,7 @@ public class Parrot extends Bird {
     }
 
 
-    public Integer getVocabularySize() {
+    public int getVocabularySize() {
         return vocabulary.size();
     }
 
@@ -76,11 +76,12 @@ public class Parrot extends Bird {
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +
-                ", numOfWings=" + getHasWings() +
+                ", hasWings=" + getHasWings() +
                 ", favoriteFoods=" + getPreferredFoods() +
+                ", favoriteFoods=" + getIsMammal() +
                 ", Vocabulary size=" + getVocabularySize() +
                 ", favorite Word=" + getFavoriteWord() +
-                ",  Vocabulary=" + getVocabulary() +
+                ", Vocabulary=" + getVocabulary() +
                 "}";
     }
 }

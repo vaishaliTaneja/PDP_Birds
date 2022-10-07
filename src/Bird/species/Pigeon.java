@@ -8,8 +8,8 @@ import java.util.Set;
 
 public class Pigeon extends Bird {
 
-    public final static BirdType SPECIES_TYPE = BirdType.OWL;
-    public final static String TYPE_CHARACTERISTICS = "facial disks that frame the eyes and bill";
+    public final static BirdType SPECIES_TYPE = BirdType.PIGEON;
+    public final static String TYPE_CHARACTERISTICS = "known for feeding their young \"bird milk\"";
     public final static Boolean IS_EXTINCT = false;
     public final static Boolean HAS_WINGS = false;
 
@@ -28,8 +28,9 @@ public class Pigeon extends Bird {
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +
-                ", numOfWings=" + getHasWings() +
+                ", hasWings=" + getHasWings() +
                 ", favoriteFoods=" + getPreferredFoods() +
+                ", isMammal=" + getIsMammal() +
                 "}";
     }
 }
