@@ -53,6 +53,7 @@ public class ConservatoryTest {
         conservatory.rescueBird(owl);
         conservatory.rescueBird(preyBird);
         assertEquals(2, conservatory.getAviaries().size());
+
     }
 
     @Test
@@ -65,6 +66,36 @@ public class ConservatoryTest {
         assertEquals(1, conservatory.getAviaries().size());
     }
 
+    @Test
+    public void rescueBirdWhenMaxCapacityExceededReturnsFalse() {
+        Set<String> prefFood = new HashSet<>();
+        try {
+            for (int i = 0; i < 100; i++) {
+                Bird owl = new Owl("Owl", Owl.SPECIES_TYPE, Owl.TYPE_CHARACTERISTICS, false, Owl.HAS_WINGS, Owl.IS_MAMMAL, prefFood);
+                conservatory.rescueBird(owl);
+            }
+        }catch (Exception e){
+            System.out.println("Exception called");
+            assertEquals("All 20 Avaries full capacity! Can't rescue", e.getMessage());
+        }
+    }
+
+    @Test
+    public void rescueConflictingBird() {
+        Set<String> prefFood = new HashSet<>();
+        try {
+            for (int i = 0; i < 99; i++) {
+                Bird owl = new Owl("Owl", Owl.SPECIES_TYPE, Owl.TYPE_CHARACTERISTICS, false, Owl.HAS_WINGS, Owl.IS_MAMMAL, prefFood);
+                conservatory.rescueBird(owl);
+            }
+            PreyBird preyBird = new PreyBird("PreyBird",PreyBird.SPECIES_TYPE, PreyBird.TYPE_CHARACTERISTICS, false,Owl.HAS_WINGS,Owl.IS_MAMMAL,prefFood);
+            conservatory.rescueBird(preyBird);
+
+        }catch (Exception e){
+            System.out.println("Exception called");
+            assertEquals("Conflicting birds and no empty aviary! Can't rescue", e.getMessage());
+        }
+    }
     //KEWAL ADD TEST FOR WHEN THERE IS NO SPACE. AND CONFLICTING
 
     @Test
@@ -198,6 +229,6 @@ public class ConservatoryTest {
         conservatory.rescueBird(owl6);
         conservatory.rescueBird(preyBird);
         Aviary aviary = conservatory.getAviaries().get(0);
-        assertEquals("",conservatory.printSignOfAviary(aviary));
+        assertEquals("MIX Aviary : The birds in this enclosure are known for facial disks that frame the eyes and bill ",conservatory.printSignOfAviary(aviary));
     }
 }

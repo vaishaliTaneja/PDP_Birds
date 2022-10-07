@@ -26,11 +26,8 @@ public class Conservatory {
             throw new IllegalArgumentException("Cannot rescue an extinct bird");
         }
 
-        //System.out.println(bird.getTypeOfBird().toString());
-
         boolean isRescued = birdAssignedToAviary(bird);
 
-      //  System.out.println("RES "+isRescued);
         if (isRescued) {
             addFoodRequirementsOfBird(bird);
             return true;
@@ -44,7 +41,6 @@ public class Conservatory {
     }
 
     public void addFoodRequirementsOfBird(Bird bird) {
-        System.out.println(bird.getPreferredFoods());
         for (String f : bird.getPreferredFoods()) {
             if (foodRequirements.containsKey(f)) {
                 foodRequirements.put(f, foodRequirements.get(f) + 1);
@@ -93,8 +89,6 @@ public class Conservatory {
      * @param bird target bird
      */
     public Boolean birdAssignedToAviary(Bird bird) {
-        //System.out.println("ASSIGN TRYING"+ bird.getName());
-        //System.out.println("Aviary "+ aviaries.size());
         boolean isBirdAssigned = false;
         BirdType birdType = mapAviaryType(bird);
         for (Aviary aviary : aviaries) {
@@ -104,7 +98,7 @@ public class Conservatory {
                 break;
             }
         }
-       // System.out.println("isBirdAssigned "+ isBirdAssigned);
+
         if (isBirdAssigned == false) {
             if (aviaries.size() < MAX_AVIARIES) {
                 int LocNum = getAviaries().size() + 1;
@@ -121,7 +115,6 @@ public class Conservatory {
                 }
             }
         }
-
         return isBirdAssigned;
     }
 
@@ -182,10 +175,8 @@ public class Conservatory {
                 }
             }
             if(birdLocMap.size() > 0){
-                System.out.println(loc);
                 for(String aviaryID : birdLocMap.keySet()){
                     map += loc + " : " + aviaryID + " : " +birdLocMap.get(aviaryID) + "\n";
-                   // System.out.println(aviaryID + " : " +birdLocMap.get(aviaryID).toString());
                 }
             }
         }
@@ -198,7 +189,7 @@ public class Conservatory {
     public String printSignOfAviary(Aviary aviary) {
         String sign = "";
         if (aviary != null && aviaries.contains(aviary)) {
-            aviary.printAviarySign();
+            sign = aviary.printAviarySign();
         }
         return sign;
     }
