@@ -24,16 +24,15 @@ public class Conservatory {
 
         if (bird.getIsExtinct()) {
             throw new IllegalArgumentException("Cannot rescue an extinct bird");
+        } else {
+            boolean isRescued = birdAssignedToAviary(bird);
+
+            if (isRescued) {
+                addFoodRequirementsOfBird(bird);
+                return true;
+            }
+            return false;
         }
-
-        boolean isRescued = birdAssignedToAviary(bird);
-
-        if (isRescued) {
-            addFoodRequirementsOfBird(bird);
-            return true;
-        }
-
-        return false;
     }
 
     public List<Aviary> getAviaries(){
@@ -79,8 +78,9 @@ public class Conservatory {
     public void removeAviary(Aviary aviary) {
         if (aviary == null) {
             throw new IllegalArgumentException("Argument cannot be null");
+        } else {
+            aviaries.remove(aviary);
         }
-        aviaries.remove(aviary);
     }
 
     /**
@@ -135,16 +135,17 @@ public class Conservatory {
      * @param bird target
      * @return aviary that the bird is in
      */
-    public Aviary searchBirdInAviaries(Bird bird) {
+    public Aviary searchBirdInAviaries(Bird bird) throws IllegalArgumentException {
         if (bird == null) {
             throw new IllegalArgumentException("Arguments cannot be null");
-        }
-        for (Aviary aviary : aviaries) {
-            if (aviary.getAllBirdsAsList().contains(bird)) {
-                return aviary;
+        } else {
+            for (Aviary aviary : aviaries) {
+                if (aviary.getAllBirdsAsList().contains(bird)) {
+                    return aviary;
+                }
             }
+            return null;
         }
-        return null;
     }
 
     public String printAllBirdsInAlphaOrderAndTheirLocation() {
