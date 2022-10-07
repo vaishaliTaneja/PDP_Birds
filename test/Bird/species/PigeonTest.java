@@ -26,13 +26,13 @@ public class PigeonTest {
     }
     @Test
     public void testDefaultToString() {
-        String desc = "Bird.species.Pigeon {name=Pigeon, type=PIGEON, characteristic=known for feeding their young \"bird milk\", isExtinct=false, hasWings=false, favoriteFoods=[], isMammal=true}";
+        String desc = "Pigeon {name=Pigeon, type=PIGEON, characteristic=known for feeding their young \"bird milk\", isExtinct=false, hasWings=false, favoriteFoods=[], isMammal=true}";
         assertEquals(desc, defaultPigeon.toString());
     }
 
     @Test
     public void testToString() {
-        String desc = "Bird.species.Pigeon {name=Pigeon, type=PIGEON, characteristic=known for feeding their young \"bird milk\", isExtinct=false, hasWings=false, favoriteFoods=[BERRIES], isMammal=true}";
+        String desc = "Pigeon {name=Pigeon, type=PIGEON, characteristic=known for feeding their young \"bird milk\", isExtinct=false, hasWings=false, favoriteFoods=[BERRIES], isMammal=true}";
         assertEquals(desc, pigeon.toString());
     }
 
