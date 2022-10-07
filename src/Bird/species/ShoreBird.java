@@ -48,8 +48,6 @@ public class ShoreBird extends Bird implements WaterBird{
 
     @Override
     public void removeWaterSource(WaterSource waterSource) {
-        System.out.println("I am here");
-        System.out.println(this.waterSources);
         if (this.waterSources.isEmpty()) {
             throw new IllegalStateException("Water Sources is empty");
         } else {
