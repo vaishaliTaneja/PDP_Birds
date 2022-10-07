@@ -1,20 +1,23 @@
 package Bird.species;
 
+import enums.BirdType;
+import enums.Food;
+import enums.WaterSource;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import enums.BirdType;
-import enums.Food;
-import enums.WaterSource;
-
 import static org.junit.Assert.assertEquals;
 
 public class WaterFoulTest {
     private WaterFoul duck;
     private Set<WaterSource> waterSources = new HashSet<>();
+    /**
+     * We need to init before each test.
+     * So we use @Before instead of @BeforeClass
+     */
     @Before
     public void setUp() throws Exception {
         Set<String> favoriteFoods = new HashSet<>();
@@ -25,22 +28,38 @@ public class WaterFoulTest {
         WaterFoul defaultWaterFoul = new WaterFoul("duck1");
         WaterFoul swan = new WaterFoul("Swan", BirdType.WATER_FOUL, "I am a swan", WaterFoul.IS_EXTINCT, WaterFoul.HAS_WINGS, WaterFoul.IS_MAMMAL, favoriteFoods, waterSources);
     }
+
+    /**
+     * To test get water resources
+     */
     @Test
     public void testGetWaterSources() {
         waterSources.add(WaterSource.FRESHWATER_SHORELANDS);
         assertEquals(waterSources, duck.getWaterSources());
     }
+
+    /**
+     * To test add water resources
+     */
     @Test
     public void testAddWaterSource() {
         waterSources.add(WaterSource.FRESHWATER_LAKE);
         duck.addWaterSource(WaterSource.FRESHWATER_LAKE);
         assertEquals(waterSources, duck.getWaterSources());
     }
+
+    /**
+     * To test set water sources
+     */
     @Test
     public void testSetWaterSources() {
         duck.setWaterSources(waterSources);
         assertEquals(waterSources, duck.getWaterSources());
     }
+
+    /**
+     * To test remove water sources
+     */
     @Test
     public void testRemoveWaterSource() {
         waterSources.remove(WaterSource.FRESHWATER_LAKE);
@@ -48,11 +67,18 @@ public class WaterFoulTest {
         assertEquals(waterSources, duck.getWaterSources());
     }
 
+    /**
+     * To test Illegal state exception
+     */
     @Test(expected = IllegalStateException.class)
     public void IllegalStateException1() {
         duck.removeWaterSource(WaterSource.FRESHWATER_SHORELANDS);
         duck.removeWaterSource(WaterSource.FRESHWATER_SHORELANDS);
     }
+
+    /**
+     * To test to string
+     */
     @Test
     public void testTestToString() {
         duck.setWaterSources(waterSources);
