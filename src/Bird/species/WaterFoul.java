@@ -24,29 +24,32 @@ public class WaterFoul extends Bird implements WaterBird{
         super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, Collections.emptySet());
     }
 
-    public WaterFoul(String name, Set<WaterSource> waterSources) {
-        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, Collections.emptySet());
+    public WaterFoul(String name, Set<String> food, Set<WaterSource> waterSources) {
+        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, food);
         this.waterSources = waterSources;
     }
 
     @Override
     public Set<WaterSource> getWaterSources() {
-        return null;
+        return waterSources;
     }
 
     @Override
     public void setWaterSources(Set<WaterSource> waterSources) {
-
+        this.waterSources = waterSources;
     }
 
     @Override
     public void addWaterSource(WaterSource waterSource) {
-
+        this.waterSources.add(waterSource);
     }
 
     @Override
     public void removeWaterSource(WaterSource waterSource) {
-
+        if (this.waterSources.isEmpty()) {
+            throw new IllegalStateException("Water Sources is empty");
+        }
+        this.waterSources.remove(waterSource);
     }
 
     @Override
@@ -56,7 +59,7 @@ public class WaterFoul extends Bird implements WaterBird{
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +
-                ", numOfWings=" + getHasWings() +
+                ", hasWings=" + getHasWings() +
                 ", favoriteFoods=" + getPreferredFoods() +
                 ", Water resources=" + getWaterSources() +
                 "}";

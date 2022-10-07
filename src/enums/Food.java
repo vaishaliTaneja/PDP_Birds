@@ -6,7 +6,8 @@ public enum Food {
     FRUIT("fruit"),
     INSECTS("insects"),
     OTHER_BIRDS("other birds"),
-    EGGS("eggs");
+    EGGS("eggs"),
+    FISH("fish");
 
     private String name;
 

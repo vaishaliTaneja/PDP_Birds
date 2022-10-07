@@ -23,12 +23,12 @@ public class ShoreBird extends Bird implements WaterBird{
         this.waterSources = waterSources;
     }
 
-    public ShoreBird(String name) {
-        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, Collections.emptySet());
+    public ShoreBird(String name, Set<String> food) {
+        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, food);
     }
 
-    public ShoreBird(String name, Set<WaterSource> waterSources) {
-        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, Collections.emptySet());
+    public ShoreBird(String name, Set<String> food, Set<WaterSource> waterSources) {
+        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, food);
         this.waterSources = waterSources;
     }
 
@@ -39,27 +39,30 @@ public class ShoreBird extends Bird implements WaterBird{
 
     @Override
     public void setWaterSources(Set<WaterSource> waterSources) {
-
+        this.waterSources = waterSources;
     }
 
     @Override
     public void addWaterSource(WaterSource waterSource) {
-
+        this.waterSources.add(waterSource);
     }
 
     @Override
     public void removeWaterSource(WaterSource waterSource) {
-
+        if (this.waterSources.isEmpty()) {
+            throw new IllegalStateException("Water Sources is empty");
+        }
+        this.waterSources.remove(waterSource);
     }
 
     @Override
     public String toString() {
-        return "Shore Bird.Bird {" +
+        return "Shore Bird {" +
                 "name=" + getName() +
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +
-                ", numOfWings=" + getHasWings() +
+                ", hasWings=" + getHasWings() +
                 ", favoriteFoods=" + getPreferredFoods() +
                 ", Water resources=" + getWaterSources() +
                 "}";
