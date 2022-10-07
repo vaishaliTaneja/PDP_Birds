@@ -97,7 +97,7 @@ public class WaterFoul extends Bird implements WaterBird{
 
     /** Creates a string to tell characteristics of Water Foul
      *
-      * @return a description of Water Foul
+      * @return <String> a description of Water Foul
      */
     @Override
     public String toString() {
