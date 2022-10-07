@@ -57,12 +57,38 @@ public class ParrotTest {
     }
 
     @Test
+    public void addWordToVocabularyWhenVocabularyis100() {
+        try {
+            for(int i=0; i < 101; i++){
+                String newWord = "home" + i;
+                parrot.addWordToVocabulary(newWord);
+            }
+        }
+        catch (Exception e){
+            assertEquals("More than 100 words", e.getMessage());
+        }
+    }
+
+    @Test
     public void removeWordFromVocabulary() {
         String newWord = "home";
         Set<String> temp = parrot.getVocabulary();
         temp.remove(newWord);
+        parrot.addWordToVocabulary(newWord);
         parrot.removeWordFromVocabulary(newWord);
         assertEquals(temp.toArray(), parrot.getVocabulary().toArray());
+    }
+
+    @Test
+    public void removeWordFromVocabularyWhenWordNotPresent() {
+       try {
+        String newWord = "home";
+        parrot.addWordToVocabulary(newWord);
+        parrot.removeWordFromVocabulary("kewal");
+       }
+       catch (Exception e){
+        assertEquals("Word not in vocabulary", e.getMessage());
+       }
     }
 
     @Test

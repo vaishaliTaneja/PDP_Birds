@@ -46,12 +46,15 @@ public class Parrot extends Bird {
     }
 
     public void addWordToVocabulary(String word) throws IllegalStateException {
-        if (this.getVocabularySize() >= 100) {
+        if (this.getVocabularySize() > 100) {
             throw new IllegalStateException("More than 100 words");
         }
         vocabulary.add(word);
     }
     public void removeWordFromVocabulary(String word) {
+        if(!vocabulary.contains(word)){
+            throw new IllegalStateException("Word not in vocabulary");
+        }
         vocabulary.remove(word);
     }
 
