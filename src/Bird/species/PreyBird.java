@@ -2,6 +2,7 @@ package Bird.species;
 
 import Bird.Bird;
 import enums.BirdType;
+import enums.Food;
 
 import java.util.Collections;
 import java.util.Set;
@@ -19,14 +20,18 @@ public class PreyBird extends Bird {
         super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, Collections.emptySet());
     }
 
+    public PreyBird(String name, Set<String> preferredFoods) {
+        super(SPECIES_TYPE, TYPE_CHARACTERISTICS, IS_EXTINCT, HAS_WINGS, IS_MAMMAL, name, preferredFoods);
+    }
+
     @Override
     public String toString() {
-        return "Bird.species.PreyBird {" +
+        return "PreyBird {" +
                 "name=" + getName() +
                 ", type=" + getTypeOfBird() +
                 ", characteristic=" + getCharacteristic() +
                 ", isExtinct=" + getIsExtinct() +
-                ", numOfWings=" + getHasWings() +
+                ", has Wings=" + getHasWings() +
                 ", favoriteFoods=" + getPreferredFoods() +
                 "}";
     }
