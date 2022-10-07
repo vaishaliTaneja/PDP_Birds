@@ -5,16 +5,13 @@ import Conservatory.Enclosure.Aviary;
 import enums.BirdType;
 import enums.Location;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Conservatory {
 
-    private final static int MAX_AVIARIES = 20;
-    private Map<String, Integer> foodRequirements = new HashMap<String, Integer>();
-    List<Aviary> aviaries;
+    public final static int MAX_AVIARIES = 20;
+    private HashMap<String, Integer> foodRequirements = new HashMap<String, Integer>();
+    private List<Aviary> aviaries = new ArrayList<>();
 
     /**
      * constructor of conservatory
@@ -23,20 +20,31 @@ public class Conservatory {
 
     }
 
-    public void rescueBird(Bird bird) {
+    public boolean rescueBird(Bird bird) {
 
         if (bird.getIsExtinct()) {
             throw new IllegalArgumentException("Cannot rescue an extinct bird");
         }
 
+        //System.out.println(bird.getTypeOfBird().toString());
+
         boolean isRescued = birdAssignedToAviary(bird);
 
-        if (isRescued)
+      //  System.out.println("RES "+isRescued);
+        if (isRescued) {
             addFoodRequirementsOfBird(bird);
+            return true;
+        }
 
+        return false;
+    }
+
+    public List<Aviary> getAviaries(){
+        return this.aviaries;
     }
 
     public void addFoodRequirementsOfBird(Bird bird) {
+        System.out.println(bird.getPreferredFoods());
         for (String f : bird.getPreferredFoods()) {
             if (foodRequirements.containsKey(f)) {
                 foodRequirements.put(f, foodRequirements.get(f) + 1);
@@ -45,6 +53,11 @@ public class Conservatory {
             }
         }
     }
+
+    public HashMap<String, Integer> getFoodRequirements(){
+        return this.foodRequirements;
+    }
+
 
     /**
      * add new aviary
@@ -80,6 +93,8 @@ public class Conservatory {
      * @param bird target bird
      */
     public Boolean birdAssignedToAviary(Bird bird) {
+        //System.out.println("ASSIGN TRYING"+ bird.getName());
+        //System.out.println("Aviary "+ aviaries.size());
         boolean isBirdAssigned = false;
         BirdType birdType = mapAviaryType(bird);
         for (Aviary aviary : aviaries) {
@@ -89,10 +104,11 @@ public class Conservatory {
                 break;
             }
         }
-
+       // System.out.println("isBirdAssigned "+ isBirdAssigned);
         if (isBirdAssigned == false) {
             if (aviaries.size() < MAX_AVIARIES) {
-                Location location = Location.valueOf("LOCATION" + aviaries.size());
+                int LocNum = getAviaries().size() + 1;
+                Location location = Location.valueOf("LOCATION" + LocNum);
                 Aviary newAviary = new Aviary(location , "Conservatory.Enclosure.Aviary" + aviaries.size());
                 this.addAviary(newAviary);
                 newAviary.addBird(bird);
@@ -138,27 +154,29 @@ public class Conservatory {
         return null;
     }
 
-    public void printAllBirdsInAlphaOrderAndTheirLocation() {
-        HashMap<Bird, String> birdLocMap = new HashMap<>();
+    public String printAllBirdsInAlphaOrderAndTheirLocation() {
+        HashMap<String, String> birdLocMap = new HashMap<>();
         for (Aviary aviary : aviaries) {
             for (Bird bird : aviary.getAllBirds())
-                birdLocMap.put(bird, aviary.getLocation().toString());
+                birdLocMap.put(bird.getName().toLowerCase(), aviary.getLocation().toString());
         }
-
-        System.out.println("Bird.Bird listed in alpha order and their location");
-        for (Bird bird : birdLocMap.keySet()) {
-            System.out.println(bird.getName() + " : " + birdLocMap.get(bird));
+        TreeMap<String, String> sorted  = new TreeMap<>(birdLocMap);
+        String output = "";
+        for (Map.Entry<String, String> entry: sorted.entrySet()) {
+            output += entry.getKey() + " : " + entry.getValue() + '\n';
         }
+        return output;
     }
 
-    public void mapAviariesByTheirLocation() {
+    public String mapAviariesByTheirLocation() {
+        String map = "";
         for (Location loc: Location.values()) {
-            HashMap<String, List<Bird>> birdLocMap = new HashMap<>();
+            HashMap<String, List<String>> birdLocMap = new HashMap<>();
             for (Aviary aviary : aviaries) {
                 if (loc == aviary.getLocation()) {
-                    List<Bird> birdList = new ArrayList<>();
+                    List<String> birdList = new ArrayList<>();
                     for (Bird bird : aviary.getAllBirds()){
-                        birdList.add(bird);
+                        birdList.add(bird.getName());
                     }
                     birdLocMap.put(aviary.getAviaryID(),birdList );
                 }
@@ -166,20 +184,23 @@ public class Conservatory {
             if(birdLocMap.size() > 0){
                 System.out.println(loc);
                 for(String aviaryID : birdLocMap.keySet()){
-                    //KEWAL Not sure how the bird will print
-                    System.out.println(aviaryID + " : " +birdLocMap.get(aviaryID).toString());
+                    map += loc + " : " + aviaryID + " : " +birdLocMap.get(aviaryID) + "\n";
+                   // System.out.println(aviaryID + " : " +birdLocMap.get(aviaryID).toString());
                 }
             }
         }
+        return map;
     }
 
     /**
      * print all signs of all the aviaries
      */
-    public void printSignOfAviary(Aviary aviary) {
-        if (aviary != null) {
+    public String printSignOfAviary(Aviary aviary) {
+        String sign = "";
+        if (aviary != null && aviaries.contains(aviary)) {
             aviary.printAviarySign();
         }
+        return sign;
     }
 
     private BirdType mapAviaryType(Bird bird) {

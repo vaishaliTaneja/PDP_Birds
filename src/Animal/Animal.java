@@ -1,5 +1,6 @@
 package Animal;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -14,7 +15,7 @@ public class Animal {
     private Boolean isMammal;
 
     //Property to hold list of all unique food items preferred by animal
-    private Set<String> preferredFoods;
+    private Set<String> preferredFoods = new HashSet<>();
 
     //Property to hold name of the name to identify them (Not unique) : Required
     private String name;
@@ -28,7 +29,7 @@ public class Animal {
      */
     public Animal (String name, Boolean isExtinct, Boolean isMammal, Set<String> preferredFoods) {
         if (name == null) {
-            throw new IllegalArgumentException("Bird.Bird should have a name identifier");
+            throw new IllegalArgumentException("Bird should have a name identifier");
         }
         this.name = name;
         this.isExtinct = isExtinct;
@@ -87,7 +88,7 @@ public class Animal {
      * @return preferred food : Set<String>
      */
     public Set<String> getPreferredFoods() {
-        return preferredFoods;
+        return this.preferredFoods;
     }
 
     /**
