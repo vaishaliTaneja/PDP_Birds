@@ -3,6 +3,7 @@ package Animal;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,6 +24,15 @@ public class AnimalTest {
         isMammal = true;
         prefFood.add("Meat");
         animal = new Animal(name, isExtinct, isMammal, prefFood);
+    }
+
+    @Test
+    public void testAnimalConstructorWithNoName(){
+        try{
+            Animal animal = new Animal(null, false, true, Collections.emptySet());
+        }catch (Exception e){
+            assertEquals("Bird should have a name identifier", e.getMessage());
+        }
     }
 
     @Test

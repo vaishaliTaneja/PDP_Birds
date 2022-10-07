@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
 
 public class ParrotTest {
 
-    Parrot defaultParrot, parrot;
+    Parrot defaultParrot, parrot, speakingParrot;
     String name;
     Set<String> prefFood = new HashSet<>();
 
@@ -28,6 +28,7 @@ public class ParrotTest {
         vocabulary.add("Hi");
         favoriteWord = "joke";
         parrot = new Parrot(name,Parrot.SPECIES_TYPE, Parrot.TYPE_CHARACTERISTICS, Parrot.IS_EXTINCT,Parrot.HAS_WINGS,Parrot.IS_MAMMAl,prefFood, vocabulary, favoriteWord);
+        speakingParrot = new Parrot(name, vocabulary, favoriteWord);
     }
     @Test
     public void getVocabularySize() {
@@ -113,6 +114,12 @@ public class ParrotTest {
     public void testToString() {
         String desc = "Bird.species.Parrot {name=Parrot, type=PARROT, characteristic=short, curved beak and are known for their intelligence, isExtinct=false, hasWings=true, favoriteFoods=[BERRIES], favoriteFoods=false, Vocabulary size=2, favorite Word=joke, Vocabulary=[Hi, Hello]}";
         assertEquals(desc, parrot.toString());
+    }
+
+    @Test
+    public void testToStringOfSpeakingParrot() {
+        String desc = "Bird.species.Parrot {name=Parrot, type=PARROT, characteristic=short, curved beak and are known for their intelligence, isExtinct=false, hasWings=true, favoriteFoods=[], favoriteFoods=false, Vocabulary size=2, favorite Word=joke, Vocabulary=[Hi, Hello]}";
+        assertEquals(desc, speakingParrot.toString());
     }
 
     @org.junit.Test
