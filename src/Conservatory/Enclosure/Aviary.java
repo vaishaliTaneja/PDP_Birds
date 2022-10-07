@@ -23,6 +23,9 @@ public class Aviary {
         this.location = location;
         this.id = id;
     }
+    /**
+     * set type of Aviary based on the type of birds it contains
+     */
     private void setAviaryType() {
         var typeOfBird = this.birds.get(0).getTypeOfBird();
         switch (typeOfBird) {
@@ -37,10 +40,19 @@ public class Aviary {
             break;
         }
     }
-
+    /**
+     * get ID of the aviary
+     *
+     * @return ID of the aviary
+     */
     public String getAviaryID(){
         return this.id;
     }
+    /**
+     * get type of aviary
+     *
+     * @return type of Aviary
+     */
     public BirdType getAviaryType(){
         return this.aviaryType;
     }
@@ -66,7 +78,7 @@ public class Aviary {
     /**
      * add new bird to this aviary
      *
-     * @param bird bird to be added
+     * @param bird to be added
      */
     public void addBird(Bird bird) throws IllegalArgumentException{
         if (bird == null) {
@@ -122,6 +134,12 @@ public class Aviary {
     public boolean isEmpty() {
         return birds.isEmpty();
     }
+
+    /**
+     * Print the sign of Aviary
+     *
+     * @return return a string that returns aviary type and unique characteristics about aviary
+     */
 
     public String printAviarySign(){
         String sign = getAviaryType() + " Aviary : ";
