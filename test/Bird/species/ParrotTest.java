@@ -27,7 +27,7 @@ public class ParrotTest {
         vocabulary.add("Hello");
         vocabulary.add("Hi");
         favoriteWord = "joke";
-        parrot = new Parrot(name,Parrot.SPECIES_TYPE, Parrot.TYPE_CHARACTERISTICS, Parrot.IS_EXTINCT,Parrot.HAS_WINGS,Parrot.IS_MAMMAl,prefFood, vocabulary, favoriteWord);
+        parrot = new Parrot(name,Parrot.SPECIES_TYPE, Parrot.TYPE_CHARACTERISTICS, Parrot.IS_EXTINCT,Parrot.HAS_WINGS,Parrot.IS_MAMMAL,prefFood, vocabulary, favoriteWord);
         speakingParrot = new Parrot(name, vocabulary, favoriteWord);
     }
     @Test
@@ -148,7 +148,7 @@ public class ParrotTest {
 
     @Test
     public void getIsMammal() {
-        assertEquals(Parrot.IS_MAMMAl, parrot.getIsMammal());
+        assertEquals(Parrot.IS_MAMMAL, parrot.getIsMammal());
     }
 
     @Test
