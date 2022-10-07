@@ -1,8 +1,7 @@
 package Bird;
 
-import Bird.species.FlightlessBird;
-import enums.BirdType;
 import Bird.species.Owl;
+import enums.BirdType;
 import enums.Food;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +9,7 @@ import org.junit.Test;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class BirdTest {
 
