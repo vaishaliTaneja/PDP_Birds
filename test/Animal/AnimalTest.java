@@ -74,4 +74,10 @@ public class AnimalTest {
         animal.setPreferredFoods(newFood);
         assertEquals(newFood, animal.getPreferredFoods());
     }
+
+    @Test
+    public void testToString(){
+        String def = "Animal {name=Cat, isExtinct=false, isMammal=true, PreferredFood=[Meat]}";
+        assertEquals(def, animal.toString());
+    }
 }
