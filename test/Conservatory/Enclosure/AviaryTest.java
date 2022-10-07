@@ -1,5 +1,13 @@
 package Conservatory.Enclosure;
 
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import Bird.Bird;
 import Bird.species.ShoreBird;
 import Bird.species.WaterFoul;
@@ -7,13 +15,10 @@ import enums.BirdType;
 import enums.Food;
 import enums.Location;
 import enums.WaterSource;
-import junit.framework.TestCase;
-import org.junit.Before;
-import org.junit.Test;
 
-import java.util.*;
+import static org.junit.Assert.assertEquals;
 
-public class AviaryTest extends TestCase {
+public class AviaryTest {
 
     private Aviary aviary1;
     private  WaterFoul duck;

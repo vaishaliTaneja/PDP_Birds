@@ -1,16 +1,18 @@
 package Bird.species;
 
-import enums.BirdType;
-import enums.Food;
-import enums.WaterSource;
-import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class ShoreBirdTest extends TestCase {
+import enums.BirdType;
+import enums.Food;
+import enums.WaterSource;
+
+import static org.junit.Assert.assertEquals;
+
+public class ShoreBirdTest {
 
     private ShoreBird great_auk;
     private  ShoreBird horned_puffin;
@@ -52,4 +54,10 @@ public class ShoreBirdTest extends TestCase {
         great_auk.setWaterSources(waterSources);
         assertEquals("Shore Bird {name=great_auk, type=SHORE_BIRD, characteristic=live near water sources including wetlands, freshwater and saltwater shorelands, even the ocean., isExtinct=false, hasWings=true, favoriteFoods=[FISH], Water resources=[SALTWATER_SHORELANDS]}", great_auk.toString());
     }
+    @Test(expected = IllegalStateException.class)
+    public void IllegalStateException1() {
+        great_auk.removeWaterSource(WaterSource.SALTWATER_SHORELANDS);
+        great_auk.removeWaterSource(WaterSource.WETLANDS);
+    }
+
 }

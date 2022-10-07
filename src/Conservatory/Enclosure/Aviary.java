@@ -1,10 +1,13 @@
 package Conservatory.Enclosure;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import Bird.Bird;
 import enums.BirdType;
 import enums.Location;
-
-import java.util.*;
 
 
 public class Aviary {
@@ -66,8 +69,6 @@ public class Aviary {
      * @param bird bird to be added
      */
     public void addBird(Bird bird) throws IllegalArgumentException{
-        System.out.println("+++++++++++++++++++++++++++++++++++");
-        System.out.println(bird);
         if (bird == null) {
             System.out.println("I am here");
             throw new IllegalArgumentException("Bird.Bird should be an object of type Bird.Bird");
